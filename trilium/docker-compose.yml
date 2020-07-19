@@ -1,0 +1,41 @@
+version: "3.3"
+services:
+    trilium_instance:
+        image: zadam/trilium:0.43.2
+        container_name: trilium_instance
+
+        hostname: trilium_instance
+        restart: on-failure
+
+        volumes:
+            - /home/fedy95/docker-data/trilium/data:/home/fedy95/docker-data/trilium/data
+        ports:
+            - 8080:8080
+
+    trilium_nginx:
+        image: umputun/nginx:1.3.0
+        container_name: trilium_nginx
+
+        hostname: trilium_nginx
+        restart: always
+        depends_on:
+            - trilium_instance
+
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "5"
+
+        volumes:
+            - ./etc/nginx/ssl:/etc/nginx/ssl
+            - ./etc/nginx/service-trilium_instance.conf:/etc/nginx/service-trilium_instance.conf
+        ports:
+            - 80:80
+            - 443:443
+
+        environment:
+            - TZ=Europe/Moscow
+            - LETSENCRYPT=true
+            - LE_EMAIL=fedy95@protonmail.com
+            - LE_FQDN=wiki.fedy95.com
