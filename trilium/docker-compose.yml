@@ -1,25 +1,25 @@
-version: "3.3"
+version: "3"
 services:
-    trilium_instance:
-        image: zadam/trilium:0.43.2
-        container_name: trilium_instance
+    trilium:
+        image: zadam/trilium:0.43.3
+        container_name: trilium_app
 
-        hostname: trilium_instance
+        hostname: trilium_app
         restart: on-failure
 
         volumes:
-            - /home/fedy95/infra/trilium/data:/home/fedy95/infra/trilium/data
-        ports:
-            - 8080:8080
+            - ./etc/app/data:/root/trilium-data
+        expose:
+            - "8080"
 
-    trilium_nginx:
+    nginx:
         image: umputun/nginx-le:1.3.0
         container_name: trilium_nginx
 
         hostname: trilium_nginx
         restart: always
         depends_on:
-            - trilium_instance
+            - trilium
 
         logging:
             driver: json-file
@@ -29,10 +29,10 @@ services:
 
         volumes:
             - ./etc/nginx/ssl:/etc/nginx/ssl
-            - ./etc/nginx/service-trilium_instance.conf:/etc/nginx/service-trilium_instance.conf
+            - ./etc/nginx/service.conf:/etc/nginx/service.conf
         ports:
-            - 80:80
-            - 443:443
+            - "80:80"
+            - "443:443"
 
         environment:
             - TZ=Europe/Moscow
