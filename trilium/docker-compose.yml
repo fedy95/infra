@@ -9,5 +9,5 @@ services:
 
         volumes:
             - ./etc/app/data:/root/trilium-data
-        ports:
-            - "8000:8080"
+        expose:
+            - "8080"
