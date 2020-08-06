@@ -24,3 +24,10 @@ services:
             - LETSENCRYPT=true
             - LE_EMAIL=fedy95@protonmail.com
             - LE_FQDN=wiki.fedy95.com
+        networks:
+            - trilium_default
+
+networks:
+    trilium_default:
+        external: true
+
