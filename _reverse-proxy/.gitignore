@@ -1,1 +1,2 @@
-etc/nginx/ssl/
+/etc/nginx/.authfile
+/etc/nginx/ssl/

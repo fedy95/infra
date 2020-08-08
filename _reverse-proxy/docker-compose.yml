@@ -13,10 +13,11 @@ services:
                 max-file: "5"
 
         volumes:
-            - ./etc/nginx/ssl:/etc/nginx/ssl
+            - ./etc/nginx/.authfile:/etc/nginx/.authfile
             - ./etc/nginx/service_grafana.conf:/etc/nginx/service_grafana.conf
             - ./etc/nginx/service_pihole.conf:/etc/nginx/service_pihole.conf
             - ./etc/nginx/service_trilium.conf:/etc/nginx/service_trilium.conf
+            - ./etc/nginx/ssl:/etc/nginx/ssl
         ports:
             - "80:80"
             - "443:443"
