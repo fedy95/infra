@@ -5,7 +5,7 @@ A [monitoring solution](https://github.com/stefanprodan/dockprom) for Docker hos
 ---
 
 ### run
-```bash
+```shell script
 git clone https://github.com/stefanprodan/dockprom
 cd dockprom
 

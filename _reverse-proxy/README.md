@@ -3,12 +3,12 @@
 
 
 ### run
-```bash
+```shell script
 docker-compose up -d
 ```
 
 ### debug
-```bash
+```shell script
 docker-compose logs -f nginx
 
 docker exec -it nginx /bin/sh
