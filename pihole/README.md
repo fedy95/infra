@@ -1,0 +1,24 @@
+### info
+- [docker-pi-hole](https://github.com/pi-hole/docker-pi-hole)
+- [pi-hole](https://github.com/pi-hole/pi-hole)
+
+- external service
+
+### run
+```bash
+netstat -ntlp | grep LISTEN # for check a port 53
+
+sudo sed -r -i.orig 's/#?DNSStubListener=yes/DNSStubListener=no/g' /etc/systemd/resolved.conf
+sudo sh -c 'rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf'
+systemctl restart systemd-resolved
+
+docker-compose up -d
+```
+
+### debug
+```bash
+docker-compose logs -f pihole
+
+# show password
+docker logs pihole | grep random
+```

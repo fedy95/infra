@@ -15,6 +15,7 @@ services:
         volumes:
             - ./etc/nginx/ssl:/etc/nginx/ssl
             - ./etc/nginx/service_grafana.conf:/etc/nginx/service_grafana.conf
+            - ./etc/nginx/service_pihole.conf:/etc/nginx/service_pihole.conf
             - ./etc/nginx/service_trilium.conf:/etc/nginx/service_trilium.conf
         ports:
             - "80:80"
@@ -24,7 +25,7 @@ services:
             - TZ=UTC
             - LETSENCRYPT=true
             - LE_EMAIL=fedy95@protonmail.com
-            - LE_FQDN=grafana.fedy95.com,wiki.fedy95.com
+            - LE_FQDN=grafana.fedy95.com,pihole.fedy95.com,wiki.fedy95.com
         networks:
             - dockprom_monitor-net
             - trilium_default
