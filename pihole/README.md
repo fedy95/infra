@@ -22,8 +22,32 @@ docker-compose logs -f pihole
 docker exec -it nginx /bin/sh
 
 # change password
-- pihole -a -a
+pihole -a -a
 
 # show password
 docker logs pihole | grep random
+```
+
+```bash
+# windows debug
+
+- nslookup pi.hole
+- nslookup pi.hole 192.168.1.50
+
+## correct response
+╤хЁтхЁ:  pihole
+Address:  192.168.1.50
+
+╚ь :     pi.hole
+Address:  192.168.1.50
+
+- ipconfig /flushdns
+
+## correct response
+╤хЁтхЁ:  pihole
+Address:  192.168.1.50
+
+╚ь :     flurry.com
+Addresses:  ::
+          0.0.0.0
 ```
