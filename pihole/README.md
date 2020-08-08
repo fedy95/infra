@@ -19,6 +19,11 @@ docker-compose up -d
 ```bash
 docker-compose logs -f pihole
 
+docker exec -it nginx /bin/sh
+
+# change password
+- pihole -a -a
+
 # show password
 docker logs pihole | grep random
 ```
