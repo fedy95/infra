@@ -1,3 +1,2 @@
 .authfile
-/etc/dnsmasq.d/
-/etc/pihole/
+/etc
