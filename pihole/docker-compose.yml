@@ -1,0 +1,25 @@
+version: "3"
+services:
+    pihole:
+        image: pihole/pihole:latest
+        container_name: pihole
+        hostname: pihole
+        restart: always
+
+        volumes:
+            - ./etc/dnsmasq.d/:/etc/dnsmasq.d/
+            - ./etc/pihole/:/etc/pihole/
+        ports:
+            - "53:53/tcp"
+            - "53:53/udp"
+            - "67:67/udp"
+            - "80:80/tcp"
+            - "43:443/tcp"
+        cap_add:
+            - NET_ADMIN
+        dns:
+            - 127.0.0.1
+            - 1.1.1.1
+
+        environment:
+            - TZ=Europe/Moscow
