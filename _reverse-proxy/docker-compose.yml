@@ -32,7 +32,7 @@ services:
             - trilium_default
 
 networks:
-    dockprom_monitor-net:
+    grafana_monitor-net:
         external: true
     trilium_default:
         external: true
