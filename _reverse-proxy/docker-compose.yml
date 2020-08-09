@@ -28,7 +28,7 @@ services:
             - LE_EMAIL=fedy95@protonmail.com
             - LE_FQDN=grafana.fedy95.com,pihole.fedy95.com,wiki.fedy95.com
         networks:
-            - dockprom_monitor-net
+            - grafana_monitor-net
             - trilium_default
 
 networks:
