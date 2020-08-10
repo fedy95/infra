@@ -2,14 +2,13 @@
 - [docker-pi-hole](https://github.com/pi-hole/docker-pi-hole)
 - [pi-hole](https://github.com/pi-hole/pi-hole)
 
-- external service
-
 ### run
 ```shell script
 netstat -ntlp | grep LISTEN # for check a port 53
 
+sudo sh -c 'cp -p /etc/resolved.conf /etc/resolved.conf.bak'
 sudo sed -r -i.orig 's/#?DNSStubListener=yes/DNSStubListener=no/g' /etc/systemd/resolved.conf
-sudo sh -c 'rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf'
+sudo sh -c 'mv /etc/resolv.conf /etc/resolv.conf.bak && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf'
 systemctl restart systemd-resolved
 
 docker-compose up -d
@@ -32,22 +31,22 @@ docker logs pihole | grep random
 ```shell script
 
 - nslookup pi.hole
-- nslookup pi.hole 192.168.1.50
+- nslookup pi.hole 192.168.1.49
 
 ## correct response
 :  pihole
-Address:  192.168.1.50
+Address:  192.168.1.49
 
-:     pi.hole
-Address:  192.168.1.50
+: pi.hole
+Address:  192.168.1.49
 
 - ipconfig /flushdns
 
 ## correct response
 :  pihole
-Address:  192.168.1.50
+Address:  192.168.1.49
 
-:     flurry.com
+: lurry.com
 Addresses:  ::
           0.0.0.0
 ```

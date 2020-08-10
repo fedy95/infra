@@ -9,12 +9,13 @@ services:
         volumes:
             - ./etc/dnsmasq.d/:/etc/dnsmasq.d/
             - ./etc/pihole/:/etc/pihole/
+        expose:
+            - "80"
+            - "443"
         ports:
             - "53:53/tcp"
             - "53:53/udp"
             - "67:67/udp"
-            - "80:80/tcp"
-            - "43:443/tcp"
         cap_add:
             - NET_ADMIN
         dns:
@@ -23,4 +24,4 @@ services:
 
         environment:
             - TZ=Europe/Moscow
-            - ServerIP=192.168.1.50
+            - ServerIP=192.168.1.49
