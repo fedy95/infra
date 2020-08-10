@@ -29,10 +29,13 @@ services:
             - LE_FQDN=grafana.fedy95.com,pihole.fedy95.com,wiki.fedy95.com
         networks:
             - grafana_monitor-net
+            - pihole_default
             - trilium_default
 
 networks:
     grafana_monitor-net:
+        external: true
+    pihole_default:
         external: true
     trilium_default:
         external: true
