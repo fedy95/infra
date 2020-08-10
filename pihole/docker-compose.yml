@@ -1,7 +1,7 @@
 version: "3"
 services:
     pihole:
-        image: pihole/pihole:5.1.2
+        image: pihole/pihole:v5.1.2
         container_name: pihole
         hostname: pihole
         restart: always
