@@ -6,9 +6,6 @@ services:
         hostname: keeweb
         restart: always
 
-        volumes:
-            - ./etc/keePass.kdbx:/keeweb/keePass.kdbx
-
         expose:
             - "80"
             - "443"
