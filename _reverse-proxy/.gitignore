@@ -1,2 +1,4 @@
 /etc/nginx/.authfile
 /etc/nginx/ssl/
+/etc/nginx/webdav/data
+/etc/nginx/webdav/temp
