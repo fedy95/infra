@@ -20,6 +20,8 @@ services:
             - ./etc/nginx/service_trilium.conf:/etc/nginx/service_trilium.conf
             - ./etc/nginx/service_webdav.conf:/etc/nginx/service_webdav.conf
             - ./etc/nginx/ssl:/etc/nginx/ssl
+            - ./etc/nginx/webdav/data:/etc/nginx/webdav/data
+            - ./etc/nginx/webdav/temp:/etc/nginx/webdav/temp
         ports:
             - "80:80"
             - "443:443"
