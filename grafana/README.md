@@ -5,7 +5,7 @@
 - [cAdvisor](https://github.com/google/cadvisor)
 - [Pushgateway](https://github.com/prometheus/pushgateway)
 - [Grafana](https://github.com/grafana/grafana)
-
+- [Alertmanager](https://github.com/prometheus/alertmanager)
 - [dockprom](https://github.com/stefanprodan/dockprom)
 
 ---
