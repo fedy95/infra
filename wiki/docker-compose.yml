@@ -1,10 +1,10 @@
 version: "3"
 services:
-    db:
+    wiki_db:
         image: postgres:13-alpine
-        container_name: db
+        container_name: wiki_db
 
-        hostname: db
+        hostname: wiki_db
         restart: unless-stopped
 
         logging:
@@ -17,18 +17,18 @@ services:
 
         volumes:
             - ./etc/db-data:/var/lib/postgresql/data
-    wiki:
+    wiki_instanse:
         image: requarks/wiki:2.4
-        container_name: wiki
+        container_name: wiki_instanse
 
-        hostname: wiki
+        hostname: wiki_instanse
         restart: unless-stopped
         depends_on:
-            - db
+            - wiki_db
 
         environment:
             DB_TYPE: postgres
-            DB_HOST: db
+            DB_HOST: wiki_db
             DB_PORT: 5432
             DB_NAME: wiki
             DB_USER: wikiuser
