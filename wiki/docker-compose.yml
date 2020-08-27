@@ -17,11 +17,11 @@ services:
 
         volumes:
             - ./etc/db-data:/var/lib/postgresql/data
-    wiki_instanse:
+    wiki_instance:
         image: requarks/wiki:2.4
-        container_name: wiki_instanse
+        container_name: wiki_instance
 
-        hostname: wiki_instanse
+        hostname: wiki_instance
         restart: unless-stopped
         depends_on:
             - wiki_db
