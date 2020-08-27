@@ -1,0 +1,38 @@
+version: "3"
+services:
+    db:
+        image: postgres:13-alpine
+        container_name: db
+
+        hostname: db
+        restart: unless-stopped
+
+        logging:
+            driver: "none"
+
+        environment:
+            POSTGRES_DB: wiki
+            POSTGRES_USER: wikiuser
+            POSTGRES_PASSWORD: wikipass
+
+        volumes:
+            - ./etc/db-data:/var/lib/postgresql/data
+    wiki:
+        image: requarks/wiki:2.4
+        container_name: wiki
+
+        hostname: wiki
+        restart: unless-stopped
+        depends_on:
+            - db
+
+        environment:
+            DB_TYPE: postgres
+            DB_HOST: db
+            DB_PORT: 5432
+            DB_NAME: wiki
+            DB_USER: wikiuser
+            DB_PASS: wikipass
+
+        expose:
+            - "3000"
