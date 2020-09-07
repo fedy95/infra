@@ -13,6 +13,9 @@ services:
                 max-file: "5"
 
         volumes:
-            - ./etc/db-data:/home/wger/db
+            - data-volume:/home/wger/db
         expose:
             - "80"
+
+volumes:
+    data-volume:
