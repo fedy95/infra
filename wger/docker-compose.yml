@@ -1,7 +1,7 @@
 version: "3"
 services:
     wger_instance:
-        image: wger/apache:1.9
+        image: wger/apache:latest
         container_name: wger_instance
         hostname: wger_instance
         restart: always
