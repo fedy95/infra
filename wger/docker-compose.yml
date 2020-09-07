@@ -1,0 +1,18 @@
+version: "3"
+services:
+    wger_instance:
+        image: wger/apache:1.9
+        container_name: wger_instance
+        hostname: wger_instance
+        restart: always
+
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "5"
+
+        volumes:
+            - ./etc/db-data:/home/wger/db
+        expose:
+            - "80"
