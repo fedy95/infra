@@ -18,7 +18,6 @@ services:
             - ./etc/nginx/service_keeweb.conf:/etc/nginx/service_keeweb.conf
             - ./etc/nginx/service_pihole.conf:/etc/nginx/service_pihole.conf
             - ./etc/nginx/service_webdav.conf:/etc/nginx/service_webdav.conf
-            - ./etc/nginx/service_wger.conf:/etc/nginx/service_wger.conf
             - ./etc/nginx/service_wiki.conf:/etc/nginx/service_wiki.conf
             - ./etc/nginx/ssl:/etc/nginx/ssl
             - ./etc/nginx/webdav/data:/etc/nginx/webdav/data
@@ -31,12 +30,11 @@ services:
             - TZ=UTC
             - LETSENCRYPT=true
             - LE_EMAIL=fedy95@protonmail.com
-            - LE_FQDN=grafana.fedy95.com,keeweb.fedy95.com,pihole.fedy95.com,webdav.fedy95.com,wger.fedy95.com,wiki.fedy95.com
+            - LE_FQDN=grafana.fedy95.com,keeweb.fedy95.com,pihole.fedy95.com,webdav.fedy95.com,wiki.fedy95.com
         networks:
             - grafana_monitor-net
             - keeweb_default
             - pihole_default
-            - wger_default
             - wiki_default
 
 networks:
@@ -45,8 +43,6 @@ networks:
     keeweb_default:
         external: true
     pihole_default:
-        external: true
-    wger_default:
         external: true
     wiki_default:
         external: true

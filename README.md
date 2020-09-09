@@ -5,5 +5,4 @@
 - https://keeweb.fedy95.com
 - https://pihole.fedy95.com/admin
 - https://webdav.fedy95.com
-- https://wger.fedy95.com
 - https://wiki.fedy95.com
