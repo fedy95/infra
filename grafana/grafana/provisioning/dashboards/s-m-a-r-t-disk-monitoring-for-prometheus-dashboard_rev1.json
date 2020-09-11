@@ -1,7 +1,7 @@
 {
     "__inputs": [
         {
-            "name": "DS_PROMETHEUS",
+            "name": "Prometheus",
             "label": "Prometheus",
             "description": "",
             "type": "datasource",
@@ -83,7 +83,7 @@
                 "#E02F44",
                 "#d44a3a"
             ],
-            "datasource": "${DS_PROMETHEUS}",
+            "datasource": "Prometheus",
             "decimals": null,
             "format": "none",
             "gauge": {
@@ -338,7 +338,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_PROMETHEUS}",
+            "datasource": "Prometheus",
             "decimals": 1,
             "fill": 0,
             "gridPos": {
@@ -664,7 +664,7 @@
         },
         {
             "cacheTimeout": null,
-            "datasource": "${DS_PROMETHEUS}",
+            "datasource": "Prometheus",
             "description": "yellow after 1 year\nred after 1 1/2 years",
             "gridPos": {
                 "h": 5,
@@ -1410,7 +1410,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "${DS_PROMETHEUS}",
+                "datasource": "Prometheus",
                 "definition": "",
                 "hide": 0,
                 "includeAll": true,
@@ -1432,7 +1432,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "${DS_PROMETHEUS}",
+                "datasource": "Prometheus",
                 "definition": "label_values(smartmon_device_info, device_model)",
                 "hide": 2,
                 "includeAll": true,
@@ -1454,7 +1454,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "${DS_PROMETHEUS}",
+                "datasource": "Prometheus",
                 "definition": "label_values(smartmon_device_info, disk)",
                 "hide": 0,
                 "includeAll": true,
