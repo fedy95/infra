@@ -1,7 +1,7 @@
 {
     "id": null,
-    "title": "Docker Host",
-    "description": "Docker host metrics",
+    "title": "Nexus host",
+    "description": "Nexus host metrics",
     "tags": [
         "system"
     ],
