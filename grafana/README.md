@@ -10,6 +10,10 @@
 
 ---
 
+### custom dashboards
+
+- https://github.com/memory-m/S.M.A.R.T-disk-monitoring-for-Prometheus
+
 ### run
 ```shell script
 ADMIN_USER=admin ADMIN_PASSWORD=admin docker-compose up -d
