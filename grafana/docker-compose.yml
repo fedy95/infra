@@ -135,6 +135,7 @@ services:
         container_name: smartctl
         hostname: smartctl
         restart: on-failure
+        privileged: true
 
         volumes:
             - ./nodeexporter/etc:/var/lib/node_exporter
