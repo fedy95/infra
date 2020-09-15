@@ -128,3 +128,18 @@ services:
             - monitor-net
         labels:
             org.label-schema.group: "monitoring"
+    smartctl:
+        build:
+            context: ./smartctl
+        container_name: smartctl
+        hostname: smartctl
+        restart: on-failure
+
+        volumes:
+            - /var/lib/node_exporter:/var/lib/node_exporter
+        environment:
+            - INTERVAL=300
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
