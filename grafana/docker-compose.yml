@@ -45,10 +45,10 @@ services:
             - /:/rootfs:ro
         command:
             - '--path.procfs=/host/proc'
-            - '--path.rootfs=/rootfs'
             - '--path.sysfs=/host/sys'
+            - '--path.rootfs=/rootfs'
             - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
-
+            - '--collector.textfile.directory=/var/lib/node_exporter'
         expose:
             - "9100"
         networks:
