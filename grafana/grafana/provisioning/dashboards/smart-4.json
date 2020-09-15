@@ -552,7 +552,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "",
         "hide": 0,
         "includeAll": true,
@@ -574,7 +574,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(smartmon_device_info, device_model)",
         "hide": 2,
         "includeAll": true,
@@ -596,7 +596,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(smartmon_device_info, disk)",
         "hide": 0,
         "includeAll": true,

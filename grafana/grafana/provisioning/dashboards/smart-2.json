@@ -67,7 +67,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -163,7 +163,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fontSize": "100%",
       "gridPos": {
         "h": 5,
@@ -236,7 +236,7 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "decimals": 0,
       "fill": 1,
       "fillGradient": 0,
@@ -337,7 +337,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fontSize": "100%",
       "gridPos": {
         "h": 10,
@@ -489,7 +489,7 @@
       "type": "table"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "gridPos": {
         "h": 6,
         "w": 11,
@@ -551,7 +551,7 @@
     {
       "cacheTimeout": null,
       "columns": [],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -651,7 +651,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "Prometheus",
       "decimals": 0,
       "fill": 1,
       "fillGradient": 0,
@@ -759,7 +759,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "",
         "hide": 0,
         "includeAll": true,
@@ -781,7 +781,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(smartmon_device_smart_available, disk)",
         "hide": 0,
         "includeAll": true,
@@ -803,7 +803,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(smartmon_device_smart_available, type)",
         "hide": 0,
         "includeAll": true,
@@ -825,7 +825,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(smartmon_device_smart_available, device_model)",
         "hide": 0,
         "includeAll": true,
@@ -847,7 +847,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(smartmon_device_smart_available, serial_number)",
         "hide": 0,
         "includeAll": true,
@@ -869,7 +869,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(smartmon_device_smart_available, model_family)",
         "hide": 0,
         "includeAll": true,
