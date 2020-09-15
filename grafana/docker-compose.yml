@@ -43,6 +43,7 @@ services:
             - /proc:/host/proc:ro
             - /sys:/host/sys:ro
             - /:/rootfs:ro
+            - ./nodeexporter/etc:/var/lib/node_exporter
         command:
             - '--path.procfs=/host/proc'
             - '--path.sysfs=/host/sys'
@@ -136,7 +137,7 @@ services:
         restart: on-failure
 
         volumes:
-            - /var/lib/node_exporter:/var/lib/node_exporter
+            - ./nodeexporter/etc:/var/lib/node_exporter
         environment:
             - INTERVAL=300
         networks:
