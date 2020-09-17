@@ -14,13 +14,3 @@
 ```shell script
 ADMIN_USER=admin ADMIN_PASSWORD=admin docker-compose up -d
 ```
-
-- monitoring multiple remote hosts
-1. run on unit-host
-```shell script
-docker-compose -f docker-compose.exporters.yml up -d
-```
-
-2, update prometheus.yml on nexus
-
-https://github.com/stefanprodan/dockprom/issues/171

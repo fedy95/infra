@@ -56,6 +56,28 @@ services:
             - monitor-net
         labels:
             org.label-schema.group: "monitoring"
+    nginxexporter:
+        image: nginx/nginx-prometheus-exporter:0.5.0
+        container_name: nginxexporter
+        hostname: nginxexporter
+        restart: on-failure
+
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "5"
+
+        environment:
+            - SCRAPE_URI=http://nginx/nginx_status
+            - TELEMETRY_PATH=/metrics
+            - NGINX_RETRIES=10
+        expose:
+            - "9101"
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
 
     cadvisor:
         image: gcr.io/cadvisor/cadvisor:v0.37.0
@@ -129,6 +151,7 @@ services:
             - monitor-net
         labels:
             org.label-schema.group: "monitoring"
+
     smartctl:
         build:
             context: ./smartctl
