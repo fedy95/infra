@@ -69,11 +69,11 @@ services:
                 max-file: "5"
 
         environment:
-            - SCRAPE_URI=http://nginx/nginx_status
+            - SCRAPE_URI=http://nginx:80/nginx_status
             - TELEMETRY_PATH=/metrics
             - NGINX_RETRIES=10
         expose:
-            - "9101"
+            - "9113"
         networks:
             - monitor-net
         labels:
