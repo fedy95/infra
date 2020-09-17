@@ -22,7 +22,7 @@ scrape_configs:
     -   job_name: 'nginxexporter'
         scrape_interval: 5s
         static_configs:
-            -   targets: ['nginxexporter:9101']
+            -   targets: ['nginxexporter:9113']
 
     -   job_name: 'cadvisor'
         scrape_interval: 5s
