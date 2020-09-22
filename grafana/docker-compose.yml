@@ -9,6 +9,34 @@ volumes:
     grafana_data: {}
 
 services:
+    loki:
+        image: grafana/loki:1.6.0
+        container_name: loki
+        hostname: loki
+        restart: on-failure
+
+        command: -config.file=/etc/loki/local-config.yaml
+
+        expose:
+            - "3100"
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
+    promtail:
+        image: grafana/promtail:1.6.0
+        container_name: promtail
+        hostname: promtail
+        restart: on-failure
+
+        volumes:
+            - /var/log:/var/log
+        command: -config.file=/etc/promtail/config.yml
+
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
     prometheus:
         image: prom/prometheus:v2.20.0
         container_name: prometheus
