@@ -1,5 +1,6 @@
 ### info
 
+- [Loki/Promtail](https://github.com/grafana/loki)
 - [Prometheus](https://github.com/prometheus/prometheus)
 - [NodeExporter](https://github.com/prometheus/node_exporter)
 - [cAdvisor](https://github.com/google/cadvisor)
