@@ -5,6 +5,7 @@ networks:
         driver: bridge
 
 volumes:
+    promtail-data: {}
     prometheus_data: {}
     grafana_data: {}
 
@@ -15,7 +16,8 @@ services:
         hostname: loki
         restart: on-failure
 
-        command: -config.file=/etc/loki/local-config.yaml
+        command:
+            - '-config.file=/etc/loki/local-config.yaml'
 
         expose:
             - "3100"
@@ -30,8 +32,12 @@ services:
         restart: on-failure
 
         volumes:
+            - promtail-data:/var/lib/promtail/positions
+            - ./promtail/etc/promtail/config.yml:/etc/promtail/config.yml
+            - /var/lib/docker/containers:/var/lib/docker/containers:ro
             - /var/log:/var/log
-        command: -config.file=/etc/promtail/config.yml
+        command:
+            - '-config.file=/etc/promtail/config.yml'
 
         networks:
             - monitor-net
@@ -173,8 +179,8 @@ services:
             - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
             - GF_USERS_ALLOW_SIGN_UP=false
 
-        expose:
-            - "3000"
+        ports:
+            - "3000:3000"
         networks:
             - monitor-net
         labels:
