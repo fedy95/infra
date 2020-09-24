@@ -2,6 +2,9 @@ MAKEFLAGS += --silent
 
 .PHONY: *
 
+reload-reverse-proxy:
+	docker-compose -f _reverse-proxy/docker-compose.yml exec -T nginx sh -c "nginx -s reload"
+
 restart-reserve-proxy:
 	docker-compose -f _reverse-proxy/docker-compose.yml down
 	docker-compose -f _reverse-proxy/docker-compose.yml up -d
@@ -26,4 +29,4 @@ up-all:
 	docker-compose -f grafana/docker-compose.yml up -d
 	docker-compose -f _reverse-proxy/docker-compose.yml up -d
 
-.DEFAULT_GOAL := restart-reserve-proxy
+.DEFAULT_GOAL := reload-reverse-proxy
