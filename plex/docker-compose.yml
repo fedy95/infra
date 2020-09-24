@@ -1,0 +1,22 @@
+version: "3"
+
+volumes:
+    plex_data: {}
+
+services:
+    plex:
+        image: linuxserver/plex
+        container_name: plex
+        hostname: plex
+        restart: unless-stopped
+
+        volumes:
+            - plex_data:/config
+            - ./etc/media:/media
+        environment:
+            - PUID=$UID
+            - PGID=$GID
+            - VERSION=docker
+
+        ports:
+            - "32400:32400/tcp"
