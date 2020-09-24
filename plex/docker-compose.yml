@@ -8,24 +8,15 @@ services:
         image: linuxserver/plex
         container_name: plex
         hostname: plex
-        restart: always
+        restart: unless-stopped
 
         volumes:
             - plex_data:/config
-            - ./home:/etc/pihole/
-        expose:
-            - "80"
-            - "443"
-        ports:
-            - "53:53/tcp"
-            - "53:53/udp"
-            - "67:67/udp"
-        cap_add:
-            - NET_ADMIN
-        dns:
-            - 127.0.0.1
-            - 1.1.1.1
-
+            - ./etc/media:/media
         environment:
-            - TZ=Europe/Moscow
-            - ServerIP=192.168.1.49
+            - PUID=$UID
+            - PGID=$GID
+            - VERSION=docker
+
+        ports:
+            - "32400:32400/tcp"
