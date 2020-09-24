@@ -14,8 +14,8 @@ services:
             - plex_data:/config
             - ./etc/media:/media
         environment:
-            - PUID=$UID
-            - PGID=$GID
+            - PUID=1000
+            - PGID=1000
             - VERSION=docker
 
         expose:
