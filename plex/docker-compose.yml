@@ -18,5 +18,5 @@ services:
             - PGID=1000
             - VERSION=docker
 
-        expose:
-            - "32400"
+        ports:
+            - "32400:32400/tcp"
