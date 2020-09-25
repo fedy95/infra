@@ -39,7 +39,6 @@ services:
             - grafana_monitor-net
             - keeweb_default
             - pihole_default
-            - plex_default
             - wiki_default
 
 networks:
@@ -48,8 +47,6 @@ networks:
     keeweb_default:
         external: true
     pihole_default:
-        external: true
-    plex_default:
         external: true
     wiki_default:
         external: true
