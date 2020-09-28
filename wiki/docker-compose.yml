@@ -18,7 +18,7 @@ services:
         volumes:
             - ./etc/db-data:/var/lib/postgresql/data
     wiki_instance:
-        image: requarks/wiki:2.4
+        image: requarks/wiki:2.5
         container_name: wiki_instance
 
         hostname: wiki_instance
