@@ -5,109 +5,25 @@ networks:
         driver: bridge
 
 volumes:
-    promtail-data: {}
-    prometheus_data: {}
     grafana_data: {}
+    prometheus_data: {}
+    promtail-data: {}
 
 services:
-    loki:
-        image: grafana/loki:1.6.0
-        container_name: loki
-        hostname: loki
-        restart: on-failure
-
-        command:
-            - '-config.file=/etc/loki/local-config.yaml'
-
-        expose:
-            - "3100"
-        networks:
-            - monitor-net
-        labels:
-            org.label-schema.group: "monitoring"
-    promtail:
-        image: grafana/promtail:1.6.0
-        container_name: promtail
-        hostname: promtail
-        restart: on-failure
-
-        volumes:
-            - promtail-data:/var/lib/promtail/positions
-            - ./promtail/etc/promtail/config.yml:/etc/promtail/config.yml
-            - /var/lib/docker/containers:/var/lib/docker/containers:ro
-            - /var/log:/var/log
-        command:
-            - '-config.file=/etc/promtail/config.yml'
-
-        networks:
-            - monitor-net
-        labels:
-            org.label-schema.group: "monitoring"
-    prometheus:
-        image: prom/prometheus:v2.20.0
-        container_name: prometheus
-        hostname: prometheus
+    alertmanager:
+        image: prom/alertmanager:v0.21.0
+        container_name: alertmanager
+        hostname: alertmanager
         restart: unless-stopped
 
         volumes:
-            - ./prometheus:/etc/prometheus
-            - prometheus_data:/prometheus
+            - ./alertmanager:/etc/alertmanager
         command:
-            - '--config.file=/etc/prometheus/prometheus.yml'
-            - '--storage.tsdb.path=/prometheus'
-            - '--web.console.libraries=/etc/prometheus/console_libraries'
-            - '--web.console.templates=/etc/prometheus/consoles'
-            - '--storage.tsdb.retention.time=200h'
-            - '--web.enable-lifecycle'
+            - '--config.file=/etc/alertmanager/config.yml'
+            - '--storage.path=/alertmanager'
 
         expose:
-            - "9090"
-        networks:
-            - monitor-net
-        labels:
-            org.label-schema.group: "monitoring"
-
-    nodeexporter:
-        image: prom/node-exporter:v1.0.1
-        container_name: nodeexporter
-        hostname: nodeexporter
-        restart: unless-stopped
-
-        volumes:
-            - /proc:/host/proc:ro
-            - /sys:/host/sys:ro
-            - /:/rootfs:ro
-            - ./nodeexporter/etc:/var/lib/node_exporter
-        command:
-            - '--path.procfs=/host/proc'
-            - '--path.sysfs=/host/sys'
-            - '--path.rootfs=/rootfs'
-            - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
-            - '--collector.textfile.directory=/var/lib/node_exporter'
-        expose:
-            - "9100"
-        networks:
-            - monitor-net
-        labels:
-            org.label-schema.group: "monitoring"
-    nginxexporter:
-        image: nginx/nginx-prometheus-exporter:0.5.0
-        container_name: nginxexporter
-        hostname: nginxexporter
-        restart: on-failure
-
-        logging:
-            driver: json-file
-            options:
-                max-size: "10m"
-                max-file: "5"
-
-        environment:
-            - SCRAPE_URI=http://nginx:80/nginx_status
-            - TELEMETRY_PATH=/metrics
-            - NGINX_RETRIES=10
-        expose:
-            - "9113"
+            - "9093"
         networks:
             - monitor-net
         labels:
@@ -132,39 +48,6 @@ services:
         labels:
             org.label-schema.group: "monitoring"
 
-
-    pushgateway:
-        image: prom/pushgateway:v1.2.0
-        container_name: pushgateway
-        hostname: pushgateway
-        restart: unless-stopped
-
-        expose:
-            - "9091"
-        networks:
-            - monitor-net
-        labels:
-            org.label-schema.group: "monitoring"
-
-    alertmanager:
-        image: prom/alertmanager:v0.21.0
-        container_name: alertmanager
-        hostname: alertmanager
-        restart: unless-stopped
-
-        volumes:
-            - ./alertmanager:/etc/alertmanager
-        command:
-            - '--config.file=/etc/alertmanager/config.yml'
-            - '--storage.path=/alertmanager'
-
-        expose:
-            - "9093"
-        networks:
-            - monitor-net
-        labels:
-            org.label-schema.group: "monitoring"
-
     grafana:
         image: grafana/grafana:7.1.1
         container_name: grafana
@@ -181,6 +64,126 @@ services:
 
         ports:
             - "3000:3000"
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
+
+    loki:
+        image: grafana/loki:1.6.0
+        container_name: loki
+        hostname: loki
+        restart: on-failure
+
+        command:
+            - '-config.file=/etc/loki/local-config.yaml'
+
+        expose:
+            - "3100"
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
+
+    nginxexporter:
+        image: nginx/nginx-prometheus-exporter:0.5.0
+        container_name: nginxexporter
+        hostname: nginxexporter
+        restart: on-failure
+
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "5"
+
+        environment:
+            - SCRAPE_URI=http://nginx:80/nginx_status
+            - TELEMETRY_PATH=/metrics
+            - NGINX_RETRIES=10
+        expose:
+            - "9113"
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
+
+
+    nodeexporter:
+        image: prom/node-exporter:v1.0.1
+        container_name: nodeexporter
+        hostname: nodeexporter
+        restart: unless-stopped
+
+        volumes:
+            - /proc:/host/proc:ro
+            - /sys:/host/sys:ro
+            - /:/rootfs:ro
+            - ./nodeexporter/etc:/var/lib/node_exporter
+        command:
+            - '--path.procfs=/host/proc'
+            - '--path.sysfs=/host/sys'
+            - '--path.rootfs=/rootfs'
+            - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+            - '--collector.textfile.directory=/var/lib/node_exporter'
+        expose:
+            - "9100"
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
+
+    prometheus:
+        image: prom/prometheus:v2.20.0
+        container_name: prometheus
+        hostname: prometheus
+        restart: unless-stopped
+
+        volumes:
+            - ./prometheus:/etc/prometheus
+            - prometheus_data:/prometheus
+        command:
+            - '--config.file=/etc/prometheus/prometheus.yml'
+            - '--storage.tsdb.path=/prometheus'
+            - '--web.console.libraries=/etc/prometheus/console_libraries'
+            - '--web.console.templates=/etc/prometheus/consoles'
+            - '--storage.tsdb.retention.time=200h'
+            - '--web.enable-lifecycle'
+
+        expose:
+            - "9090"
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
+
+    promtail:
+        image: grafana/promtail:1.6.0
+        container_name: promtail
+        hostname: promtail
+        restart: on-failure
+
+        volumes:
+            - promtail-data:/var/lib/promtail/positions
+            - ./promtail/etc/promtail/config.yml:/etc/promtail/config.yml
+            - /var/lib/docker/containers:/var/lib/docker/containers:ro
+            - /var/log:/var/log
+        command:
+            - '-config.file=/etc/promtail/config.yml'
+
+        networks:
+            - monitor-net
+        labels:
+            org.label-schema.group: "monitoring"
+
+    pushgateway:
+        image: prom/pushgateway:v1.2.0
+        container_name: pushgateway
+        hostname: pushgateway
+        restart: unless-stopped
+
+        expose:
+            - "9091"
         networks:
             - monitor-net
         labels:
