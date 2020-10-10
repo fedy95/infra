@@ -1,6 +1,7 @@
 # infra
 
 ## services
+- https://gitea.fedy95.com
 - https://grafana.fedy95.com
 - https://keeweb.fedy95.com
 - https://nodeexporter.fedy95.com
