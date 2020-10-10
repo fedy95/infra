@@ -9,6 +9,10 @@ restart-reverse-proxy:
 	docker-compose -f _reverse-proxy/docker-compose.yml down
 	docker-compose -f _reverse-proxy/docker-compose.yml up -d
 
+restart-gitea:
+	docker-compose -f gitea/docker-compose.yml down
+	docker-compose -f gitea/docker-compose.yml up -d
+
 restart-grafana:
 	docker-compose -f grafana/docker-compose.yml down
 	docker-compose -f grafana/docker-compose.yml up -d
