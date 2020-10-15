@@ -4,9 +4,25 @@ MAKEFLAGS += --silent
 
 restart-all: down-all up-all
 
-down-all: restart-reverse-proxy restart-gitea restart-grafana restart-keeweb restart-pihole restart-plex restart-portainer restart-wiki
+down-all:
+	docker-compose -f _reverse-proxy/docker-compose.yml down
+	docker-compose -f gitea/docker-compose.yml          down
+	docker-compose -f grafana/docker-compose.yml        down
+	docker-compose -f keeweb/docker-compose.yml         down
+	docker-compose -f pihole/docker-compose.yml         down
+	docker-compose -f plex/docker-compose.yml           down
+	docker-compose -f portainer/docker-compose.yml      down
+	docker-compose -f wiki/docker-compose.yml           down
 
-up-all: restart-reverse-proxy restart-gitea restart-grafana restart-keeweb restart-pihole restart-plex restart-portainer restart-wiki
+up-all:
+	docker-compose -f _reverse-proxy/docker-compose.yml up -d
+	docker-compose -f gitea/docker-compose.yml          up -d
+	docker-compose -f grafana/docker-compose.yml        up -d
+	docker-compose -f keeweb/docker-compose.yml         up -d
+	docker-compose -f pihole/docker-compose.yml         up -d
+	docker-compose -f plex/docker-compose.yml           up -d
+	docker-compose -f portainer/docker-compose.yml      up -d
+	docker-compose -f wiki/docker-compose.yml           up -d
 
 reload-reverse-proxy:
 	docker-compose -f _reverse-proxy/docker-compose.yml exec -T nginx sh -c "nginx -s reload"
