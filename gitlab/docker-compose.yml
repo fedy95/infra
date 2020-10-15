@@ -8,8 +8,10 @@ services:
         hostname: gitlab_instance
         restart: always
 
+        expose:
+            - "443"
         ports:
-            - '3001:443'
+            - '3001:80'
             - '223:22'
         volumes:
             - ./etc/gitlab/config:/etc/gitlab
