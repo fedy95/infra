@@ -62,8 +62,8 @@ services:
             - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
             - GF_USERS_ALLOW_SIGN_UP=false
 
-        expose:
-            - "3000"
+        ports:
+            - "3001:3000"
         networks:
             - monitor-net
         labels:
@@ -126,8 +126,8 @@ services:
             - '--path.rootfs=/rootfs'
             - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
             - '--collector.textfile.directory=/var/lib/node_exporter'
-        expose:
-            - "9100"
+        ports:
+            - "3002:9100"
         networks:
             - monitor-net
         labels:
@@ -150,8 +150,8 @@ services:
             - '--storage.tsdb.retention.time=200h'
             - '--web.enable-lifecycle'
 
-        expose:
-            - "9090"
+        ports:
+            - "3003:9090"
         networks:
             - monitor-net
         labels:
