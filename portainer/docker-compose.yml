@@ -10,8 +10,8 @@ services:
         container_name: portainer
         restart: unless-stopped
 
-        expose:
-            - "9000"
+        ports:
+            - "3006:9000"
         volumes:
             - portainer_data:/data portainer/portainer-ce
             - /var/run/docker.sock:/var/run/docker.sock

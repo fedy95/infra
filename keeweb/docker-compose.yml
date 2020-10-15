@@ -8,4 +8,5 @@ services:
 
         expose:
             - "80"
-            - "443"
+        ports:
+            - "3004:443"
