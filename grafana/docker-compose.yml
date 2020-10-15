@@ -63,7 +63,7 @@ services:
             - GF_USERS_ALLOW_SIGN_UP=false
 
         ports:
-            - "3001:3000"
+            - "3002:3000"
         networks:
             - monitor-net
         labels:
@@ -127,7 +127,7 @@ services:
             - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
             - '--collector.textfile.directory=/var/lib/node_exporter'
         ports:
-            - "3002:9100"
+            - "3003:9100"
         networks:
             - monitor-net
         labels:
@@ -151,7 +151,7 @@ services:
             - '--web.enable-lifecycle'
 
         ports:
-            - "3003:9090"
+            - "3004:9090"
         networks:
             - monitor-net
         labels:

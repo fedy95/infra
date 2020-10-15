@@ -7,6 +7,7 @@ restart-all: down-all up-all
 down-all:
 	docker-compose -f _reverse-proxy/docker-compose.yml down
 	docker-compose -f gitea/docker-compose.yml          down
+	docker-compose -f gitlab/docker-compose.yml         down
 	docker-compose -f grafana/docker-compose.yml        down
 	docker-compose -f keeweb/docker-compose.yml         down
 	docker-compose -f pihole/docker-compose.yml         down
@@ -17,6 +18,7 @@ down-all:
 up-all:
 	docker-compose -f _reverse-proxy/docker-compose.yml up -d
 	docker-compose -f gitea/docker-compose.yml          up -d
+	docker-compose -f gitlab/docker-compose.yml         up -d
 	docker-compose -f grafana/docker-compose.yml        up -d
 	docker-compose -f keeweb/docker-compose.yml         up -d
 	docker-compose -f pihole/docker-compose.yml         up -d
@@ -34,6 +36,10 @@ restart-reverse-proxy:
 restart-gitea:
 	docker-compose -f gitea/docker-compose.yml down
 	docker-compose -f gitea/docker-compose.yml up -d
+
+restart-gitlab:
+	docker-compose -f gitlab/docker-compose.yml down
+	docker-compose -f gitlab/docker-compose.yml up -d
 
 restart-grafana:
 	docker-compose -f grafana/docker-compose.yml down
