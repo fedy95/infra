@@ -17,6 +17,7 @@ services:
             - ./etc/nginx/_nginx.conf:/etc/nginx/nginx.conf
             - ./etc/nginx/_webdav.conf:/etc/nginx/service_webdav.conf
             - ./etc/nginx/gitea.conf:/etc/nginx/service_gitea.conf
+            - ./etc/nginx/gitlab.conf:/etc/nginx/service_gitlab.conf
             - ./etc/nginx/grafana_grafana.conf:/etc/nginx/service_grafana_grafana.conf
             - ./etc/nginx/grafana_nodeexporter.conf:/etc/nginx/service_grafana_nodeexporter.conf
             - ./etc/nginx/grafana_prometheus.conf:/etc/nginx/service_grafana_prometheus.conf
@@ -36,4 +37,4 @@ services:
             - TZ=UTC
             - LETSENCRYPT=true
             - LE_EMAIL=fedy95@protonmail.com
-            - LE_FQDN=gitea.fedy95.com,grafana.fedy95.com,keeweb.fedy95.com,nodeexporter.fedy95.com,pihole.fedy95.com,plex.fedy95.com,portainer.fedy95.com,prometheus.fedy95.com,webdav.fedy95.com,wiki.fedy95.com
+            - LE_FQDN=gitea.fedy95.com,gitlab.fedy95.com,grafana.fedy95.com,keeweb.fedy95.com,nodeexporter.fedy95.com,pihole.fedy95.com,plex.fedy95.com,portainer.fedy95.com,prometheus.fedy95.com,webdav.fedy95.com,wiki.fedy95.com
