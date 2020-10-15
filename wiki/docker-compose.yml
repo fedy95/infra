@@ -35,4 +35,4 @@ services:
             DB_PASS: wikipass
 
         ports:
-            - "3008:3000"
+            - "3007:3000"
