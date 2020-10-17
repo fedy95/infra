@@ -12,7 +12,8 @@ services:
 
         volumes:
             - plex_data:/config
-            - ./etc/media:/media
+            - /mnt/WCC7K0KE9F7K/music:/media/music
+            - /mnt/WCC7K0KE9F7K/video:/media/video
 
         network_mode: host
         environment:
