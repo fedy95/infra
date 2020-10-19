@@ -6,7 +6,5 @@ services:
         hostname: keeweb
         restart: always
 
-        expose:
-            - "80"
         ports:
-            - "3005:443"
+            - "3005:80"
