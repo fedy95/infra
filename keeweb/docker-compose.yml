@@ -1,12 +1,10 @@
 version: "3"
 services:
     keeweb:
-        image: antelle/keeweb:1.15.6
+        image: antelle/keeweb:1.15.7
         container_name: keeweb
         hostname: keeweb
         restart: always
 
-        expose:
-            - "80"
         ports:
-            - "3005:443"
+            - "3005:80"
