@@ -5,15 +5,15 @@ volumes:
 
 services:
     plex:
-        image: linuxserver/plex:version-1.20.3.3437-f1f08d65b
+        image: linuxserver/plex:version-1.20.4.3517-ab5e1197c
         container_name: plex
         hostname: plex
         restart: unless-stopped
 
         volumes:
             - plex_data:/config
-            - /mnt/WCC7K0KE9F7K/music:/media/music
-            - /mnt/WCC7K0KE9F7K/video:/media/video
+            - /mnt/md0/infra/plex/etc/music:/media/music
+            - /mnt/md0/infra/plex/etc/video:/media/video
 
         network_mode: host
         environment:
