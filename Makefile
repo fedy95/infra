@@ -13,7 +13,6 @@ down-all:
 	docker-compose -f pihole/docker-compose.yml         down
 	docker-compose -f plex/docker-compose.yml           down
 	docker-compose -f portainer/docker-compose.yml      down
-	docker-compose -f wiki/docker-compose.yml           down
 
 up-all:
 	docker-compose -f gitlab/docker-compose.yml         up -d
@@ -22,7 +21,6 @@ up-all:
 	docker-compose -f pihole/docker-compose.yml         up -d
 	docker-compose -f plex/docker-compose.yml           up -d
 	docker-compose -f portainer/docker-compose.yml      up -d
-	docker-compose -f wiki/docker-compose.yml           up -d
 
 restart-gitlab:
 	docker-compose -f gitlab/docker-compose.yml down
@@ -47,7 +45,3 @@ restart-plex:
 restart-portainer:
 	docker-compose -f portainer/docker-compose.yml down
 	docker-compose -f portainer/docker-compose.yml up -d
-
-restart-wiki:
-	docker-compose -f wiki/docker-compose.yml down
-	docker-compose -f wiki/docker-compose.yml up -d
