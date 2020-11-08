@@ -10,13 +10,11 @@ down-all:
 	docker-compose -f gitlab/docker-compose.yml         down
 	docker-compose -f grafana/docker-compose.yml        down
 	docker-compose -f pihole/docker-compose.yml         down
-	docker-compose -f portainer/docker-compose.yml      down
 
 up-all:
 	docker-compose -f gitlab/docker-compose.yml         up -d
 	docker-compose -f grafana/docker-compose.yml        up -d
 	docker-compose -f pihole/docker-compose.yml         up -d
-	docker-compose -f portainer/docker-compose.yml      up -d
 
 restart-gitlab:
 	docker-compose -f gitlab/docker-compose.yml down
@@ -29,7 +27,3 @@ restart-grafana:
 restart-pihole:
 	docker-compose -f pihole/docker-compose.yml down
 	docker-compose -f pihole/docker-compose.yml up -d
-
-restart-portainer:
-	docker-compose -f portainer/docker-compose.yml down
-	docker-compose -f portainer/docker-compose.yml up -d
