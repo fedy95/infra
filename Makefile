@@ -11,7 +11,6 @@ down-all:
 	docker-compose -f grafana/docker-compose.yml        down
 	docker-compose -f keeweb/docker-compose.yml         down
 	docker-compose -f pihole/docker-compose.yml         down
-	docker-compose -f plex/docker-compose.yml           down
 	docker-compose -f portainer/docker-compose.yml      down
 
 up-all:
@@ -19,7 +18,6 @@ up-all:
 	docker-compose -f grafana/docker-compose.yml        up -d
 	docker-compose -f keeweb/docker-compose.yml         up -d
 	docker-compose -f pihole/docker-compose.yml         up -d
-	docker-compose -f plex/docker-compose.yml           up -d
 	docker-compose -f portainer/docker-compose.yml      up -d
 
 restart-gitlab:
@@ -37,10 +35,6 @@ restart-keeweb:
 restart-pihole:
 	docker-compose -f pihole/docker-compose.yml down
 	docker-compose -f pihole/docker-compose.yml up -d
-
-restart-plex:
-	docker-compose -f plex/docker-compose.yml down
-	docker-compose -f plex/docker-compose.yml up -d
 
 restart-portainer:
 	docker-compose -f portainer/docker-compose.yml down
